@@ -1,0 +1,346 @@
+<html lang="en" class="scroll-smooth bg-black text-white antialiased"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surfuser | Digital Architecture</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom utilities that are cleaner in CSS than inline arbitrary values */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* 3D specific setups */
+        .perspective-container {
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+        
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden font-sans selection:bg-zinc-800 selection:text-white">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 inset-x-0 z-50 glass-nav transition-transform duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl tracking-tight font-medium text-white flex items-center gap-2 relative z-50">
+                <i data-lucide="waves" class="w-5 h-5 text-zinc-400" stroke-width="1.5"></i>
+                Surfuser
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#services" class="text-base font-normal text-zinc-400 hover:text-white transition-colors">Services</a>
+                <a href="#compatibility" class="text-base font-normal text-zinc-400 hover:text-white transition-colors">Compatibility</a>
+                <a href="#contact" class="text-base font-normal text-zinc-400 hover:text-white transition-colors">Contact</a>
+                <button class="bg-white text-black px-4 py-2 rounded-full text-base font-medium hover:bg-zinc-200 transition-colors flex items-center gap-2 group">
+                    Start Building
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" stroke-width="1.5"></i>
+                </button>
+            </nav>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden relative z-50 p-2 -mr-2 text-zinc-400 hover:text-white transition-colors focus:outline-none" aria-label="Toggle menu">
+                <i data-lucide="menu" class="w-6 h-6" stroke-width="1.5" id="menu-icon"></i>
+                <i data-lucide="x" class="w-6 h-6 hidden" stroke-width="1.5" id="close-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay & Drawer -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-menu" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-zinc-950 border-l border-white/5 z-40 translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] pt-24 px-8 flex flex-col gap-6 shadow-2xl">
+        <div class="flex flex-col gap-6">
+            <a href="#services" class="mobile-link text-2xl tracking-tight font-medium text-zinc-400 hover:text-white transition-colors border-b border-white/5 pb-4">Services</a>
+            <a href="#compatibility" class="mobile-link text-2xl tracking-tight font-medium text-zinc-400 hover:text-white transition-colors border-b border-white/5 pb-4">Compatibility</a>
+            <a href="#contact" class="mobile-link text-2xl tracking-tight font-medium text-zinc-400 hover:text-white transition-colors border-b border-white/5 pb-4">Contact</a>
+        </div>
+        <div class="mt-auto pb-12">
+            <button class="mobile-link w-full bg-white text-black px-6 py-4 rounded-xl text-lg font-medium hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2">
+                Start Building
+            </button>
+        </div>
+    </aside>
+
+    <main>
+        <!-- 3D Scroll Hero Section -->
+        <div class="h-[250vh] relative w-full bg-black">
+            <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden perspective-container">
+                <!-- Grid background for depth context -->
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20"></div>
+                
+                <h1 id="hero-title" class="text-7xl sm:text-8xl md:text-[14vw] tracking-tight font-medium text-zinc-600 will-change-transform z-10 select-none relative flex flex-col items-center">
+                    Surfuser
+                    <span class="text-lg md:text-2xl text-zinc-500 tracking-normal font-normal mt-4 absolute top-full left-1/2 -translate-x-1/2 w-max opacity-0 animate-[fadeIn_1s_ease_1s_forwards]">Scroll to explore</span>
+                </h1>
+            </div>
+        </div>
+
+        <!-- Content Overlay container -->
+        <div class="relative z-20 bg-zinc-950 rounded-t-[2.5rem] sm:rounded-t-[4rem] border-t border-white/5 shadow-[0_-20px_80px_rgba(0,0,0,0.8)] -mt-[10vh]">
+            
+            <!-- Intro Text -->
+            <section class="max-w-4xl mx-auto px-6 pt-32 pb-24 text-center">
+                <h2 class="text-4xl md:text-5xl tracking-tight font-medium text-white mb-8">We build the web that works.</h2>
+                <p class="text-xl md:text-2xl text-zinc-400 font-normal leading-relaxed">
+                    Surfuser is a premium digital agency dedicated to crafting flawlessly engineered websites. We obsess over the details so you don't have to—ensuring every interaction, every layout, and every button press performs perfectly.
+                </p>
+            </section>
+
+            <!-- Features Grid -->
+            <section id="services" class="max-w-7xl mx-auto px-6 py-24">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Card 1 -->
+                    <div class="group bg-zinc-900/50 border border-white/5 rounded-3xl p-8 hover:bg-zinc-900 transition-colors duration-300">
+                        <div class="w-12 h-12 bg-zinc-800 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="layout-template" class="w-6 h-6 text-white" stroke-width="1.5"></i>
+                        </div>
+                        <h3 class="text-2xl tracking-tight font-medium text-white mb-4">Precision Engineering</h3>
+                        <p class="text-lg text-zinc-400 font-normal leading-relaxed mb-8">
+                            We don't just design; we build robust architectures. Every website is structured to be lightning-fast, highly scalable, and structurally sound.
+                        </p>
+                        <button class="text-base text-white font-medium flex items-center gap-2 group/btn">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" stroke-width="1.5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="group bg-zinc-900/50 border border-white/5 rounded-3xl p-8 hover:bg-zinc-900 transition-colors duration-300">
+                        <div class="w-12 h-12 bg-zinc-800 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="smartphone" class="w-6 h-6 text-white" stroke-width="1.5"></i>
+                        </div>
+                        <h3 class="text-2xl tracking-tight font-medium text-white mb-4">Universal Compatibility</h3>
+                        <p class="text-lg text-zinc-400 font-normal leading-relaxed mb-8">
+                            Seamless experiences across all devices. We ensure perfect compatibility for mobile, tablet, and desktop viewing environments automatically.
+                        </p>
+                        <button class="text-base text-white font-medium flex items-center gap-2 group/btn">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" stroke-width="1.5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="group bg-zinc-900/50 border border-white/5 rounded-3xl p-8 hover:bg-zinc-900 transition-colors duration-300">
+                        <div class="w-12 h-12 bg-zinc-800 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="mouse-pointer-click" class="w-6 h-6 text-white" stroke-width="1.5"></i>
+                        </div>
+                        <h3 class="text-2xl tracking-tight font-medium text-white mb-4">Flawless Interactions</h3>
+                        <p class="text-lg text-zinc-400 font-normal leading-relaxed mb-8">
+                            Every button works. Every form submits. We rigorously test all interactive elements, including complex navigations and micro-interactions.
+                        </p>
+                        <button class="text-base text-white font-medium flex items-center gap-2 group/btn">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" stroke-width="1.5"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Interactive Demo Section -->
+            <section id="compatibility" class="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="w-full lg:w-1/2">
+                        <h2 class="text-4xl md:text-5xl tracking-tight font-medium text-white mb-6">Test the details.</h2>
+                        <p class="text-lg text-zinc-400 font-normal mb-10 leading-relaxed">
+                            Interact with the elements below. This is the level of responsiveness and reliability we guarantee in every project. Custom built, strictly functional.
+                        </p>
+                        
+                        <!-- Custom UI Elements -->
+                        <div class="space-y-8 bg-zinc-900/30 p-8 rounded-3xl border border-white/5">
+                            <!-- Custom Toggle -->
+                            <label class="flex items-center justify-between cursor-pointer group">
+                                <span class="text-lg font-medium text-zinc-300 group-hover:text-white transition-colors">Enable Advanced Analytics</span>
+                                <div class="relative">
+                                    <input type="checkbox" class="sr-only peer" checked="">
+                                    <div class="w-11 h-6 bg-zinc-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white"></div>
+                                    <div class="absolute inset-0 rounded-full mix-blend-difference peer-checked:bg-black/20 pointer-events-none transition-colors"></div>
+                                </div>
+                            </label>
+
+                            <!-- Custom Slider -->
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <label class="text-lg font-medium text-zinc-300">Server Capacity</label>
+                                    <span class="text-base font-mono text-zinc-500">80%</span>
+                                </div>
+                                <div class="relative w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
+                                    <div class="absolute top-0 left-0 h-full bg-white w-4/5 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full lg:w-1/2 relative">
+                        <div class="aspect-square md:aspect-[4/3] bg-zinc-900 rounded-3xl border border-white/10 overflow-hidden relative flex items-center justify-center group">
+                            <div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.03)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[gradient_8s_linear_infinite]"></div>
+                            <div class="relative z-10 text-center space-y-4">
+                                <i data-lucide="check-circle-2" class="w-16 h-16 text-white mx-auto opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" stroke-width="1.5"></i>
+                                <p class="text-lg font-medium text-zinc-400">Systems Operational</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA & Footer -->
+            <footer id="contact" class="border-t border-white/5 bg-black mt-24">
+                <div class="max-w-7xl mx-auto px-6 py-32 flex flex-col items-center text-center">
+                    <h2 class="text-5xl md:text-7xl tracking-tight font-medium text-white mb-8">Ready to build?</h2>
+                    <p class="text-xl text-zinc-400 font-normal mb-12 max-w-2xl">
+                        Let's engineer a digital experience that performs seamlessly across all platforms.
+                    </p>
+                    <button class="bg-white text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-zinc-200 transition-transform hover:scale-105 active:scale-95 flex items-center gap-3">
+                        Contact our team
+                        <i data-lucide="arrow-right" class="w-5 h-5" stroke-width="1.5"></i>
+                    </button>
+                </div>
+                
+                <div class="max-w-7xl mx-auto px-6 py-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-2 text-zinc-500 text-base">
+                        <i data-lucide="waves" class="w-4 h-4" stroke-width="1.5"></i>
+                        <span class="font-medium tracking-tight">Surfuser</span> © 2024
+                    </div>
+                    <div class="flex gap-6 text-base text-zinc-500">
+                        <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms</a>
+                        <a href="#" class="hover:text-white transition-colors">Twitter</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <style>
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @keyframes gradient {
+            0% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // --- Hamburger Menu Logic ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        const toggleMenu = (forceClose = false) => {
+            if (forceClose) isMenuOpen = false;
+            else isMenuOpen = !isMenuOpen;
+
+            if (isMenuOpen) {
+                // Open Menu
+                mobileMenu.classList.remove('translate-x-full');
+                menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            } else {
+                // Close Menu
+                mobileMenu.classList.add('translate-x-full');
+                menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        };
+
+        // Event Listeners for Hamburger
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        // Close when clicking overlay (outside menu)
+        menuOverlay.addEventListener('click', () => toggleMenu(true));
+
+        // Close when clicking a link inside the menu
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => toggleMenu(true));
+        });
+
+        // --- 3D Scroll Effect Logic ---
+        const heroTitle = document.getElementById('hero-title');
+        const navbar = document.getElementById('navbar');
+        let ticking = false;
+        let lastScrollY = window.scrollY;
+
+        function update3DScroll() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            
+            // Navbar hidden on scroll down, show on scroll up
+            if (scrollY > 100) {
+                if (scrollY > lastScrollY && !isMenuOpen) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScrollY = scrollY;
+
+            // 3D Text Effect calculation
+            // Only calculate if within the hero section height (approx 1.5 viewport heights)
+            if (scrollY < windowHeight * 1.5 && heroTitle) {
+                // Progress goes from 0 to ~1.5
+                const progress = scrollY / windowHeight;
+                
+                // Calculate 3D transforms
+                // Pushes text forward towards screen (Z), moves it up slightly (Y), and rotates it down (X)
+                const translateZ = progress * 1000; 
+                const translateY = progress * -150;
+                const rotateX = progress * 25;
+                
+                // Fade out as it passes the "camera"
+                const opacity = Math.max(0, 1 - (progress * 1.2));
+                // Blur effect as it gets closer
+                const blur = progress * 10;
+
+                heroTitle.style.transform = `translate3d(0, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg)`;
+                heroTitle.style.opacity = opacity;
+                heroTitle.style.filter = `blur(${blur}px)`;
+            }
+
+            ticking = false;
+        }
+
+        // Optimized scroll listener using requestAnimationFrame
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(update3DScroll);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Initial trigger
+        update3DScroll();
+    </script>
+
+</body></html>
